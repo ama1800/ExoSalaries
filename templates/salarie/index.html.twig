@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salarie index{% endblock %}
+
+{% block body %}
+    <h1>Salarie index</h1>
+    <div class="headforum">
+        <nav class="navbar navbar-inverse">
+            <table class="table">
+                <thead class="table-active">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>DateNaissance</th>
+                        <th>Adresse</th>
+                        <th>Cp</th>
+                        <th>Ville</th>
+                        <th>DateEmbauche</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table table-striped table-dark">
+                {% for salarie in salaries %}
+                    <tr >
+                        <td>{{ salarie.id }}</td>
+                        <td>{{ salarie.nom ~" "~ salarie.prenom }}</td>
+                        <td>{{salarie.dateNaissance | date('d/m/Y')}}</td>
+                        <td>{{ salarie.adresse }}</td>
+                        <td>{{ salarie.cp }}</td>
+                        <td>{{ salarie.ville }}</td>
+                        <td>{{ salarie.dateEmbauche | date('d/m/Y') }}</td>
+                        <td>
+                            <a href="{{ path('salarie_show', {'id': salarie.id}) }}">show</a>
+                            <a href="{{ path('salarie_edit', {'id': salarie.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="9">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('salarie_new') }}">Create new</a>
+{% endblock %}

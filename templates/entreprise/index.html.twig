@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Des Entreprises{% endblock %}
+
+{% block body %}
+    <h1>Entreprise index</h1>
+    <div class="headforum">
+        <nav class="navbar navbar-inverse">
+            <table class="table">
+                <thead class="table-active">
+                    <tr>
+                        <th>Id</th>
+                        <th>RaisonSociale</th>
+                        <th>Siret</th>
+                        <th>Adresse</th>
+                        <th>Cp</th>
+                        <th>Ville</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table table-striped table-dark">
+                {% for entreprise in entreprises %}
+                    <tr>
+                        <td>{{ entreprise.id }}</td>
+                        <td>{{ entreprise.raisonSociale }}</td>
+                        <td>{{ entreprise.siret }}</td>
+                        <td>{{ entreprise.adresse }}</td>
+                        <td>{{ entreprise.cp }}</td>
+                        <td>{{ entreprise.ville }}</td>
+                        <td>
+                            <a href="{{ path('entreprise_show', {'id': entreprise.id}) }}">show</a>
+                            <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('entreprise_new') }}">Create new</a>
+{% endblock %}

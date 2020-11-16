@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ExoSalaries{% endblock %}
+{% block body %}
+
+    <div style="display:flex;">
+        <a class="nav-link" href="{{path('salarie_index')}}"><button type="button" class="btn btn-primary btn-lg">Salaries</button></a>
+        <a class="nav-link" href="{{path('entreprise_index')}}"><button type="button" class="btn btn-primary btn-lg">Entreprises</button></a>
+    </div>
+    
+{% endblock %}

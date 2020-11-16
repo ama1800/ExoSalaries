@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salarie{% endblock %}
+
+{% block body %}
+    <h1>Salarie</h1>
+<div class="card border-success mb-3" style="max-width: 25rem;">
+  <div class="card-header">SALARIE ID: {{ salarie.id }}<br>
+    <h4 class="text-warning"> {{ salarie.nom }} {{ salarie.prenom }}</h4>
+  </div>
+  <div class="card-body text-success">
+    <h6 class="card-title">DATE DE NAISSANCE : {{salarie.dateNaissance | date('d/m/Y')}}</h6>
+    <p class="card-text">ADRESSE : <br>{{ salarie.adresse }}<br> {{ salarie.cp }}<br> {{ salarie.ville }}</p>
+    <h6>{{salarie.dateEmbauche | date('d/m/Y')}}</h6>
+  </div>
+</div>
+<div style="display: flex;">
+    <a style=" margin-right:1%; width: 10%" href="{{ path('salarie_index') }}" class="btn btn-primary">back to list</a>
+    <a style=" margin-right: 1%; width: 10%" href="{{ path('salarie_edit', {'id': salarie.id}) }}" class="btn btn-primary">edit</a>
+    {{ include('salarie/_delete_form.html.twig') }}
+</div><br><br>
+{% endblock %}
